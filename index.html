@@ -65,6 +65,22 @@
             /* Darker green */
         }
     </style>
+
+<script>
+    const hostname = window.location.hostname;
+
+    var baseHref = '/';
+    console.log(hostname)
+    if (hostname === 'localhost' || hostname === '127.0.0.1') {
+      baseHref = '/';
+
+    }
+    if (hostname === 'sheikh-tabarak.github.io') { baseHref = '/zuggle-service-widget/'; }
+    console.log(baseHref)
+    document.querySelector('base').setAttribute('href', baseHref);
+  </script>
+
+
 </head>
 
 <body>
