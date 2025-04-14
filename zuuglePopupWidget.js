@@ -161,10 +161,20 @@ const modalStyles = `
     max-height: calc(100vh - 100px);
     padding-bottom: 20px; 
 
+
+    -webkit-overflow-scrolling: touch; 
+  overscroll-behavior: contain; 
+  touch-action: pan-y;
+
+
+
     @media (max-width: 768px) {
       margin-top: 0; /* Reset margin on mobile */
       max-height: calc(100vh - 150px); /* Adjusted for mobile */
       overflow-y: auto; /* Enable scrolling if content is too long */
+      -webkit-overflow-scrolling: touch; 
+  overscroll-behavior: contain; 
+  touch-action: pan-y;
     }
   }
 
@@ -717,6 +727,8 @@ div#eleCont {
     border-radius: 9px;
     align-content: center;
 }
+
+
 
 .middle-box .element-time span{
   color: #888888;

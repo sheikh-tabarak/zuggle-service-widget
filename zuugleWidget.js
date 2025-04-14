@@ -1,7 +1,36 @@
 const modalStyles = `
-  
-  .modal {
-  font-family: dm-sans, sans-serif;
+
+.widget-header{
+display:flex;
+align-items:center;
+padding-top:5px;
+padding-bottom:10px;
+margin-bottom:10px;
+margin-top:0px;
+border-bottom:1px solid lightgray;
+}
+
+.widget-header-heading{
+color:gray;
+font-size:16px;
+}
+
+.widget-response-back-button{
+color:gray;
+display:flex;
+gap:6px;
+align-items:center;
+margin-bottom:10px;
+}
+
+
+btn{
+  font-family: 'DM Sans'!important;
+}
+
+
+  .modal {   
+  font-family: 'DM Sans'!important;
     display: none; !important;
     position: fixed;
     z-index: 1;
@@ -13,21 +42,25 @@ const modalStyles = `
     justify-content: center;
     align-items: center;
     background-color: rgba(256,256,256);
-    font-family: dm-sans, sans-serif;
 
 
   }
   #activityModal{
+  
+  font-family: 'DM Sans'!important;
       justify-content: flex-start;
 
   }
   .modal.visible {
+  
+  font-family: 'DM Sans'!important;
     display: flex; !important;
     justify-content: center; !important;
     align-items: center; !important;
   }
 
   .modal-content {
+     font-family: 'DM Sans'!important;
     background-color: #fefefe;
     padding: 20px ;
     border: none;
@@ -35,7 +68,7 @@ const modalStyles = `
     height: 100%;
     max-width: 470px;
     max-height: none;
-    overflow-y: hidden; 
+    overflow-y: auto; 
     box-sizing: border-box;
     transform: translateX(-550px);
     transition: all .3s ease-in-out ;
@@ -53,11 +86,15 @@ const modalStyles = `
   }
 
   .modal-content, middle-box, slider {
+  
+  font-family: 'DM Sans'!important;
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
 
   .modal-page {
+  
+  font-family: 'DM Sans'!important;
     display: none;
   }
 
@@ -66,30 +103,7 @@ const modalStyles = `
     flex-direction: column;
   }
 
-  .modal-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    margin-bottom: 40px;
-    border: 1.5px solid #ccc;
-    border-left: none;
-    border-right: none;
-    
-
-   
-  }
-  .modal-header p {
-    padding: 10px 0 7px 10px;
-    font-size: 18px;
-    margin: 0px;
-
-    @media (max-width: 768px) {
-      font-size: 18px;
-    }
-  }
-
-
+ 
   @media (min-height: 0px) and (max-height: 700px) {
   .calendar-container{
     top: 80px !important; ;
@@ -97,38 +111,19 @@ const modalStyles = `
 }
 
 
-.modal-header1st {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    margin-bottom: 40px;
-    border: 1.5px solid #ccc;
-    border-left: none;
-    border-right: none;
-    
-
-
-  }
-  .modal-header1st p {
-    padding: 10px 0 7px 10px;
-    font-size: 18px;
-    margin: 0px;
-
-
-  }
-
   .modal-body {
+  
+  font-family: 'DM Sans'!important;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: -40px;
-    overflow: visible;
-
-    
+  
+    overflow: visible;    
   }
 
   .modal-body-result {
+  
+  font-family: 'DM Sans'!important;
     display: flex;
     flex-direction: column;
     justify-content: flex-start; 
@@ -136,14 +131,8 @@ const modalStyles = `
     overflow: visible;
     overflow-y: auto ;
     overflow-x: hidden !important;
-    max-height: calc(100vh - 100px);
     padding-bottom: 20px; 
 
-    // @media (max-width: 768px) {
-    //   margin-top: 0; /* Reset margin on mobile */
-    //   max-height: calc(100vh - 150px); /* Adjusted for mobile */
-    //   overflow-y: auto; /* Enable scrolling if content is too long */
-    // }
   }
 
   .close {
@@ -160,11 +149,6 @@ const modalStyles = `
   .form-section {
     margin-bottom: 0px;
     color: #888;
-
-    // @media (max-width: 768px) {
-    //   margin-top: 30px;
-    //   margin-bottom: 0px;
-    // }
   }
 
   .input-container {
@@ -172,8 +156,10 @@ const modalStyles = `
   }
 
   .input-field {
+  
+  font-family: 'DM Sans'!important;
     width: 100%;
-    padding: 12px 40px;
+    padding: 12px 40px!important;
     border-radius: 5px;
     border: 1px solid #e0e0e0;
     box-sizing: border-box;
@@ -218,7 +204,9 @@ const modalStyles = `
     cursor: pointer;
   }
   #activity-time{
-    background: #0060ff1f;
+  
+  font-family: 'DM Sans'!important;
+    background:#DEE4F3;
     padding: 12px;  
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     border-radius: 8px ;
@@ -229,7 +217,9 @@ const modalStyles = `
     display: none;
   }
   .date-input {
-    padding: 12px 40px;
+  
+  font-family: 'DM Sans'!important;
+    padding: 12px 40px!important;
     border-radius: 5px;
     border: 1px solid #e0e0e0;
     width: 100%;
@@ -246,6 +236,8 @@ const modalStyles = `
   }
   
   .date-input-display {
+  
+  font-family: 'DM Sans'!important;
     color: #333;
     font-size: 16px;
     pointer-events: none;
@@ -274,6 +266,8 @@ const modalStyles = `
   }
   
   input[type="date"] {
+  
+  font-family: 'DM Sans'!important;
     opacity: 0;
     position: absolute;
     left: 0;
@@ -311,26 +305,29 @@ const modalStyles = `
   }
 
   .apply-btn {
+  
+  font-family: 'DM Sans'!important;
     background-color: #4285f4;
     color: white;
   }
 
   button.calendar-footer-btn.calendar-apply-btn{
+  
+  font-family: 'DM Sans'!important;
   background-color: #4285f4;
     color: white;
   }
 
   .back-btn {
+  font-family: 'DM Sans'!important;
     background: none;
     border: none;
-    font-size: 18px;
+    
+    font-size: 24px;
     cursor: pointer;
-    color: darkgray;
-    order:-1;
-    padding: 0 20px;
-    padding-top:4px;
+    color: lightgray;
     margin-right: 10px;
-    border-right: 2px solid #ccc;
+    border-right: 1px solid lightgray;
     font-weight: bold;
   }
 
@@ -366,6 +363,8 @@ const modalStyles = `
 
   /* Custom Calendar Style */
 .calendar-container {
+
+  font-family: 'DM Sans'!important;
     display: none;
     position: absolute;
     top: 100%;
@@ -400,13 +399,21 @@ const modalStyles = `
     justify-content: center;
     align-items: center;
     padding: 0 5px; /* Reduced from 10px */
-    border-bottom: 1px solid #f0f0f0;
   }
 
   .calendar-title {
     font-size: 16px; /* Reduced from 18px */
     font-weight: 500;
     color: #000;
+  }
+
+  .calendar-body{
+  padding:10px;
+  border:1px solid;
+  border-radius:10px;
+  margin:15px; 
+    border-radius: 8px;
+  border-color:rgb(234, 234, 234) ;
   }
 
   .calendar-nav {
@@ -448,7 +455,7 @@ const modalStyles = `
   .calendar-day {
     text-align: center;
     border-radius: 50%;
-    cursor: pointer;
+    cursor: pointer!important;
     width: 30px; 
     height: 30px; 
     display: flex;
@@ -456,6 +463,7 @@ const modalStyles = `
     justify-content: center;
     margin: 0 auto;
     font-size: 12px; 
+    color:black
   }
 
   .calendar-day:hover {
@@ -480,7 +488,6 @@ const modalStyles = `
     display: flex;
     justify-content: space-between;
     padding: 10px; 
-    border-top: 1px solid #f0f0f0;
   }
 
   .calendar-footer-btn {
@@ -494,9 +501,9 @@ const modalStyles = `
   /* Slider Styles */
 
   .slider-wrapper {
-    display: flex;
+  background-color:white;
     align-items: center;
-    margin: 5px 0;
+
   }
 
   .slider-wrapper p {
@@ -506,7 +513,7 @@ const modalStyles = `
 
   .etc{
     position: fixed;
-    top: 55px;
+    top: 0;
     background: #fff;
     width: 100% !important;
     max-width: 430px;
@@ -550,17 +557,35 @@ const modalStyles = `
     width: 97%;
     }
     }
+
+    #responseBox{
+      margin-top:200px !important;
+    }
     
   #responseBox-bottom{
-    margin-bottom:35px !important;
+  
+    margin-bottom:90px !important;
+ @media (max-width: 468px) and (min-width: 0px) {
+    
+ margin-bottom:160px !important;    
+
+    }
+    
   }
   .slider {
+  font-family: 'DM Sans'!important;
     overflow-x: auto;
     white-space: nowrap;
     flex: 1;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
+  }
+
+  .slider button{
+  
+  
+font-family: 'DM Sans'!important;
   }
 
   .slider::-webkit-scrollbar, .modal-body-result::-webkit-scrollbar {
@@ -584,10 +609,10 @@ const modalStyles = `
   }
 
   .slider button.active-time {
-       background: #4285f41f;
+       background:rgba(130, 177, 252, 0.12);
        box-shadow: none;
        color: #000;
-       border-color:  #4285f4;
+       border-color: #4285f4;
        border-width: 2px;
   }
 
@@ -610,11 +635,14 @@ const modalStyles = `
   line-height: 1.5;
   color: #333;
   overflow-y: auto;
+  
   min-height:max-content;
   border: 1px solid #e0e0e0;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+
+
   @media (max-width: 768px) {
-   max-height: 350px;
    padding: 15px;
   }
 }
@@ -628,7 +656,6 @@ const modalStyles = `
   font-weight: bold;
   margin-bottom: 10px;
   color: #000;
-  margin-top: 30px;
 }
 
 .middle-box .connection-meta {
@@ -644,7 +671,7 @@ const modalStyles = `
   padding-left: 15px;
   margin-left: 7px;
 }
-  input[type=date]::-webkit-calendar-picker-indicator{
+  input[type=date]{
   pointer-events:none;
 }
 .middle-box .connection-element {
@@ -695,12 +722,13 @@ div#eleCont {
 .middle-box .element-time span{
   color: #888888;
 }
-
-
-
-
-
 `;
+
+
+const link = document.createElement('link');
+link.href = "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"; // URL of the stylesheet
+link.rel = "stylesheet"; // Set the rel attribute
+document.head.appendChild(link);
 
 const styleTag = document.createElement("style");
 styleTag.textContent = modalStyles;
@@ -712,18 +740,29 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="modal-content">
 
       <div id="formPage" class="modal-page active">
-        <div class="modal-header1st">
-        <p>Activity Name</p>
-        <button id="backBtn1st cancel-btn" class="back-btn">&#9776;</button>
+       
+        <div class="widget-header">
+      
+        <div class="widget-header-button">
+
+        <button class="back-btn">&#9776;</button>
         </div>
+         <div class="widget-header-heading">
+        Activity Name
+        </div>   
+       
+        </div>
+
         <div class="modal-body">
-          <div class="form-section">
+          
+
+        <div class="form-section">
             <p>Origin</p>
             <div class="input-container">
               <svg class="input-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10"></circle>
               </svg>
-              <input type="text" class="input-field " id="originInput" placeholder="Enter origin" value="">
+              <input value="Stephansplatz" type="text" class="input-field " id="originInput" placeholder="Enter origin" value="">
               <svg class="input-icon-right" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="7"></circle>
                 <circle cx="12" cy="12" r="3"></circle>
@@ -759,7 +798,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </div>
-              <input type="date" id="activityDate">
+              <input value="2025-03-12" type="date" id="activityDate">
             </div>
           </div>
           <div class="form-footer">
@@ -771,31 +810,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       <div id="resultsPage" class="modal-page">
-        <div class="modal-header">
-        <p>Activity Name</p>
-        <button id="backBtn" class="back-btn">&#9776;</button>
-        </div>
+       
+
         <div class="modal-body-result">
           <div id="errorContainer" class="error-message" style="display: none"></div>
+
           <div class="slider-wrapper etc">
-              <p>Date: </p>
+       
+           <div class="widget-header">
+      
+        <div class="widget-header-button">
+
+        <button class="back-btn">&#9776;</button>
+        </div>
+         <div class="widget-header-heading">
+        Activity Name
+        </div>   
+               
+        </div>
+
+          <div  id="backBtn" class="widget-response-back-button">
+      <div>&#x2190;</div>
+       <div> Back </div>
+        </div>
+
+
+        
+
+              <div style='font-size:12px'>Incoming Dates: </div>
+              
               <div class="slider" id="topSlider">
+              
                   <!-- Timestamp buttons will be dynamically inserted here -->
               </div>
           </div>
 
           <div class="middle-box" id="responseBox">
-              API response will appear here...
+              Incoming connections are loading...
           </div>
           <div id="activity-time" >
-              API response will appear here...
+              Activity Name
               </div>
 
           <div class="middle-box" id="responseBox-bottom">
-              API response will appear here...
+              Outgoing connections are loading...
           </div>
           <div class="slider-wrapper slider-wrap-fixed">
-            <p>Date: </p>
+         <div style='font-size:12px'>Outgoing Dates: </div>
+            
             <div class="slider" id="bottomSlider"></div>
           </div>
         </div>
@@ -837,8 +899,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   backBtn.addEventListener("click", () => {
-    formPage.classList.add("active");
     resultsPage.classList.remove("active");
+    formPage.classList.add("active");
+
   });
 
   searchBtn.addEventListener("click", () => {
@@ -854,13 +917,13 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchActivityData(originInput, selectedDate);
   });
 
-  
+
 
   //**
   //** Custom Calendar
   //**
 
-  const today = new Date();
+  const today = new Date(2025, 3, 19);
   activityDate.value = today.toISOString().split("T")[0];
   updateDateDisplay(today);
 
@@ -895,12 +958,25 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="calendar-header">
       <p class="calendar-title">Select Activity Date</p>
     </div>
+   
+    <div class="calendar-body">
+
     <div class="calendar-nav">
-      <button class="calendar-nav-btn prev-month">&lt;</button>
+      <button class="calendar-nav-btn prev-month">
+      <svg width="6" height="12" viewBox="0 0 6 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.3 11L1.66938 6.76428C1.2842 6.3149 1.2842 5.65177 1.66939 5.20238L5.3 0.966667" stroke="#656C6E" stroke-width="1.1" stroke-linecap="round"/>
+</svg>
+
+      </button>
       <div class="calendar-month-year">${getMonthName(
         currentViewMonth
       )} ${currentViewYear}</div>
-      <button class="calendar-nav-btn next-month">&gt;</button>
+      <button class="calendar-nav-btn next-month">
+      <svg width="6" height="12" viewBox="0 0 6 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.699999 1L4.33061 5.23572C4.7158 5.6851 4.7158 6.34823 4.33061 6.79762L0.699999 11.0333" stroke="#656C6E" stroke-width="1.1" stroke-linecap="round"/>
+</svg>
+
+      </button>
     </div>
     <div class="calendar-grid">
       <div class="calendar-day-header">S</div>
@@ -912,17 +988,19 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="calendar-day-header">S</div>
       ${generateDaysHTML(daysInMonth, firstDayOfMonth)}
     </div>
+
+    </div>
     <div class="calendar-footer">
       <button class="calendar-footer-btn calendar-cancel-btn">Cancel</button>
       <button class="calendar-footer-btn calendar-apply-btn">Apply</button>
     </div>
   `;
 
-      
+
       calendarContainer
         .querySelector(".prev-month")
         .addEventListener("click", (e) => {
-          e.stopPropagation(); 
+          e.stopPropagation();
           currentViewMonth--;
           if (currentViewMonth < 0) {
             currentViewMonth = 11;
@@ -934,7 +1012,7 @@ document.addEventListener("DOMContentLoaded", () => {
       calendarContainer
         .querySelector(".next-month")
         .addEventListener("click", (e) => {
-          e.stopPropagation(); 
+          e.stopPropagation();
           currentViewMonth++;
           if (currentViewMonth > 11) {
             currentViewMonth = 0;
@@ -946,15 +1024,15 @@ document.addEventListener("DOMContentLoaded", () => {
       calendarContainer
         .querySelector(".calendar-cancel-btn")
         .addEventListener("click", (e) => {
-          e.stopPropagation(); 
+          e.stopPropagation();
           calendarContainer.classList.remove("active");
         });
 
       calendarContainer
         .querySelector(".calendar-apply-btn")
         .addEventListener("click", (e) => {
-          e.stopPropagation(); 
-          
+          e.stopPropagation();
+
           const formattedDate = selectedDate.toISOString().split("T")[0];
           activityDate.value = formattedDate;
 
@@ -969,12 +1047,12 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       dayElements.forEach((day) => {
         day.addEventListener("click", (e) => {
-          e.stopPropagation(); 
+          e.stopPropagation();
 
-          
+
           dayElements.forEach((d) => d.classList.remove("selected"));
 
-          
+
           day.classList.add("selected");
 
           // Update selected date
@@ -986,7 +1064,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
 
-      
+
       calendarContainer.addEventListener("click", (e) => {
         e.stopPropagation();
       });
@@ -996,7 +1074,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let html = "";
       const today = new Date();
 
-      
+
       for (let i = 0; i < firstDayOfMonth; i++) {
         html += "<div></div>";
       }
@@ -1007,9 +1085,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const isToday = date.toDateString() === today.toDateString();
         const isSelected = date.toDateString() === selectedDate.toDateString();
 
-        html += `<div class="calendar-day${isToday ? " today" : ""}${
-          isSelected ? " selected" : ""
-        }">${day}</div>`;
+        html += `<div class="calendar-day${isToday ? " today" : ""}${isSelected ? " selected" : ""
+          }">${day}</div>`;
       }
 
       return html;
@@ -1035,11 +1112,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Toggle calendar on date input click
     dateInputContainer.addEventListener("click", (e) => {
-      e.stopPropagation(); 
+      e.stopPropagation();
 
       calendarContainer.classList.toggle("active");
 
-      
+
       if (calendarContainer.classList.contains("active")) {
         renderCalendar();
       }
@@ -1047,9 +1124,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     document.addEventListener("click", (event) => {
-      
+
       if (calendarContainer.classList.contains("active")) {
-        
+
         if (
           !dateInputContainer.contains(event.target) &&
           !calendarContainer.contains(event.target)
@@ -1201,7 +1278,7 @@ document.addEventListener("DOMContentLoaded", () => {
         html += `<div style="border-left: 2px solid #eee; padding-left: 15px; margin-left: 7px;">`;
 
         conn.connection_elements.forEach((element, index) => {
-          
+
           const elementDuration = calculateElementDuration(
             element.departure_time,
             element.arrival_time
@@ -1268,66 +1345,65 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     return icons[type] || icons["DEFAULT"];
-}
-
-
-
-
-async function fetchActivityData(location, date) {
-  if (typeof window.journeyConfig === 'undefined') {
-      alert("The variable 'journeyConfig' is not defined. Please define it in the following format in a <script> tag before your main <script> in your HTML:\n\n" +
-          "<script>\n" +
-          "    var journeyConfig = {\n" +
-          "      userStartLocationType: 'address',\n" +
-          "      activityStartLocation: 'Schützen am Gebirge Bahnhof',\n" +
-          "      activityStartLocationType: 'station',\n" +
-          "      activityEndLocation: 'Eisenstadt Bahnhof',\n" +
-          "      activityEndLocationType: 'station',\n" +
-          "      activityEarliestStartTime: '09:00:00',\n" +
-          "      activityLatestEndTime: '18:00:00',\n" +
-          "      activityDurationMinutes: '180'\n" +
-          "    };\n" +
-          "</script>");
-      return;
   }
 
-  console.log("Fetching activity data...");
-  const formattedDate = new Date(date).toISOString().split("T")[0];
 
-  responseBox.textContent = "Loading...";
-  page1.classList.remove("active");
-  page2.classList.add("active");
 
-  const apiUrl = `https://api.zuugle-services.net/connections?date=${formattedDate}&user_start_location=${encodeURIComponent(location.value)}&user_start_location_type=${window.journeyConfig.userStartLocationType}&activity_start_location=${window.journeyConfig.activityStartLocation}&activity_start_location_type=${window.journeyConfig.activityStartLocationType}&activity_end_location=${window.journeyConfig.activityEndLocation}&activity_end_location_type=${window.journeyConfig.activityEndLocationType}&activity_earliest_start_time=${window.journeyConfig.activityEarliestStartTime}&activity_latest_end_time=${window.journeyConfig.activityLatestEndTime}&activity_duration_minutes=${window.journeyConfig.activityDurationMinutes}`;
-  
-  const accessToken = "development-token";
 
-  try {
+  async function fetchActivityData(location, date) {
+    if (typeof window.journeyConfig === 'undefined') {
+      alert("The variable 'journeyConfig' is not defined. Please define it in the following format in a <script> tag before your main <script> in your HTML:\n\n" +
+        "<script>\n" +
+        "    var journeyConfig = {\n" +
+        "      userStartLocationType: 'address',\n" +
+        "      activityStartLocation: 'Schützen am Gebirge Bahnhof',\n" +
+        "      activityStartLocationType: 'station',\n" +
+        "      activityEndLocation: 'Eisenstadt Bahnhof',\n" +
+        "      activityEndLocationType: 'station',\n" +
+        "      activityEarliestStartTime: '09:00:00',\n" +
+        "      activityLatestEndTime: '18:00:00',\n" +
+        "      activityDurationMinutes: '180'\n" +
+        "    };\n" +
+        "</script>");
+      return;
+    }
+
+    console.log("Fetching activity data...");
+    const formattedDate = new Date(date).toISOString().split("T")[0];
+
+    page1.classList.remove("active");
+    page2.classList.add("active");
+
+    const apiUrl = `https://api.zuugle-services.net/connections?date=${formattedDate}&user_start_location=${encodeURIComponent(location.value)}&user_start_location_type=${window.journeyConfig.userStartLocationType}&activity_start_location=${window.journeyConfig.activityStartLocation}&activity_start_location_type=${window.journeyConfig.activityStartLocationType}&activity_end_location=${window.journeyConfig.activityEndLocation}&activity_end_location_type=${window.journeyConfig.activityEndLocationType}&activity_earliest_start_time=${window.journeyConfig.activityEarliestStartTime}&activity_latest_end_time=${window.journeyConfig.activityLatestEndTime}&activity_duration_minutes=${window.journeyConfig.activityDurationMinutes}`;
+
+    const accessToken = "development-token";
+
+    try {
       const response = await fetch(apiUrl, {
-          method: "GET",
-          headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${accessToken}`,
-          },
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
       });
 
       if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
       const result = await response.json();
-      
+
       // Check if data is empty or invalid
-      if (!result || !result.connections || 
-          !result.connections.from_activity || result.connections.from_activity.length === 0 ||
-          !result.connections.to_activity || result.connections.to_activity.length === 0) {
-          
-          // Show error message and reload after 3 seconds
-          responseBox.textContent = "No data available. Reloading...";
-          setTimeout(() => {
-              window.location.reload();
-          }, 3000);
-          return;
+      if (!result || !result.connections ||
+        !result.connections.from_activity || result.connections.from_activity.length === 0 ||
+        !result.connections.to_activity || result.connections.to_activity.length === 0) {
+
+        // Show error message and reload after 3 seconds
+        responseBox.textContent = "No data available. Reloading...";
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+        return;
       }
 
       // Process the data as before
@@ -1355,14 +1431,21 @@ async function fetchActivityData(location, date) {
         const btn = document.createElement("button");
         btn.innerHTML = `
         <div style="display: flex; flex-direction: column; align-items: center;">
-          <div style="font-size: 14px; margin-bottom: 4px; font-weight: bold;">${startTime} - ${endTime}</div>
-          <div style="display: flex; align-items: center; font-size: 12px; color: #666;">
+          
+        <div style="font-size: 14px; margin-bottom: 4px; font-weight: bold;">${startTime} - ${endTime}</div>
+         
+          <div style="display: flex; justify-content:space-between;  width: -webkit-fill-available; align-items: center; font-size: 12px; color: #666;">
             <span>${duration}</span>
-            <span style="margin: 0 0 0 15px;">${conn.connection_transfers}</span>
-            <span style="margin: 0 5px;"><svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+            <div style="display: flex; gap:2px; align-items: center;">
+            <span>${conn.connection_transfers}</span>
+
+           <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M14.8537 8.85354L12.8537 10.8535C12.7598 10.9474 12.6326 11.0001 12.4999 11.0001C12.3672 11.0001 12.24 10.9474 12.1462 10.8535C12.0523 10.7597 11.9996 10.6325 11.9996 10.4998C11.9996 10.3671 12.0523 10.2399 12.1462 10.146L13.293 8.99979H2.70678L3.85366 10.146C3.94748 10.2399 4.00018 10.3671 4.00018 10.4998C4.00018 10.6325 3.94748 10.7597 3.85366 10.8535C3.75983 10.9474 3.63259 11.0001 3.49991 11.0001C3.36722 11.0001 3.23998 10.9474 3.14616 10.8535L1.14616 8.85354C1.09967 8.8071 1.06279 8.75196 1.03763 8.69126C1.01246 8.63056 0.999512 8.5655 0.999512 8.49979C0.999512 8.43408 1.01246 8.36902 1.03763 8.30832C1.06279 8.24762 1.09967 8.19248 1.14616 8.14604L3.14616 6.14604C3.23998 6.05222 3.36722 5.99951 3.49991 5.99951C3.63259 5.99951 3.75983 6.05222 3.85366 6.14604C3.94748 6.23986 4.00018 6.36711 4.00018 6.49979C4.00018 6.63247 3.94748 6.75972 3.85366 6.85354L2.70678 7.99979H13.293L12.1462 6.85354C12.0523 6.75972 11.9996 6.63247 11.9996 6.49979C11.9996 6.36711 12.0523 6.23986 12.1462 6.14604C12.24 6.05222 12.3672 5.99951 12.4999 5.99951C12.6326 5.99951 12.7598 6.05222 12.8537 6.14604L14.8537 8.14604C14.9001 8.19248 14.937 8.24762 14.9622 8.30832C14.9873 8.36902 15.0003 8.43408 15.0003 8.49979C15.0003 8.5655 14.9873 8.63056 14.9622 8.69126C14.937 8.75196 14.9001 8.8071 14.8537 8.85354Z" fill="black"/>
-</svg></span>
+</svg>
+</div>
           </div>
+
         </div>
       `;
 
@@ -1387,7 +1470,7 @@ async function fetchActivityData(location, date) {
           conn.connection_start_timestamp,
           conn.connection_end_timestamp
         );
-      
+
         const btn = document.createElement("button");
         btn.innerHTML = `
           <div style="display: flex; flex-direction: column; align-items: center;">
@@ -1401,15 +1484,15 @@ async function fetchActivityData(location, date) {
             </div>
           </div>
         `;
-      
+
         btn.onclick = () => filterDataByTimestamp("to", startTime, endTime);
-        
+
         // Add this condition to make the first button active by default
         if (index === 0) {
           btn.classList.add("active-time");
           filterDataByTimestamp("to", startTime, endTime);
         }
-        
+
         bottomSlider.appendChild(btn);
       });
 
@@ -1418,12 +1501,12 @@ async function fetchActivityData(location, date) {
     } catch (error) {
       console.error("Error fetching data:", error);
       responseBox.textContent = `Error: ${error.message}. Reloading...`;
-      
+
       // Reload after 3 seconds on error
       setTimeout(() => {
-          window.location.reload();
+        window.location.reload();
       }, 3000);
-  }
+    }
   }
 
 
@@ -1476,9 +1559,9 @@ async function fetchActivityData(location, date) {
       </div>
       <div style="font-size: 14px; color: #6B7280; font-weight: 600;">
         <div>Duration: ${calculateTimeDifference(
-          conn.connection_start_timestamp,
-          conn.connection_end_timestamp
-        )}</div>
+            conn.connection_start_timestamp,
+            conn.connection_end_timestamp
+          )}</div>
         <div>Transfers: ${conn.connection_transfers}</div>
     </div>
   </div>
@@ -1488,16 +1571,15 @@ async function fetchActivityData(location, date) {
       if (conn.connection_elements && conn.connection_elements.length > 0) {
         html += `
                 <div class="connection-header">
-                    ${
-                      type === "from" ? "From Activity" : "To Activity"
-                    } Connection
+                    ${type === "from" ? "From Activity" : "To Activity"
+          } Connection
                 </div>
                 <div class="connection-meta">
                     <span>${startTimestamp} - ${endTimestamp}</span>
                     <span>${calculateTimeDifference(
-                      conn.connection_start_timestamp,
-                      conn.connection_end_timestamp
-                    )}</span>
+            conn.connection_start_timestamp,
+            conn.connection_end_timestamp
+          )}</span>
                     <span>${conn.connection_transfers} transfers</span>
                 </div>
                 <div class="connection-elements">
@@ -1514,7 +1596,7 @@ async function fetchActivityData(location, date) {
           const arrivalTime = new Date(element.arrival_time)
             .toTimeString()
             .substring(0, 5);
-            console.log(element.type)
+          console.log(element.type)
           const iconType = !element.type ? "DEFAULT" : element.type;
           const icon = getTransportIcon(iconType);
 
