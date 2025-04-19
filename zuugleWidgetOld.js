@@ -1,41 +1,5 @@
 const modalStyles = `
 
-
-.input-container {
-    position: relative;
-}
-
-.input-field {
-    width: 100%;
-    padding: 10px 40px 10px 40px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.suggestions-container {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    z-index: 1000;
-    max-height: 150px;
-    overflow-y: auto;
-    display: none; /* Initially hidden */
-}
-
-.suggestion-item {
-    padding: 10px;
-    cursor: pointer;
-}
-
-.suggestion-item:hover {
-    background-color: #f0f0f0;
-}
-
-
 .widget-header{
 display:flex;
 align-items:center;
@@ -73,7 +37,7 @@ btn{
     align-items: center;
     background-color: rgba(256,256,256);
 position:relative;
-height:790px;
+min-height:600px;
   margin:3px;
   }
   #activityModal{
@@ -98,10 +62,10 @@ height:790px;
     width: 100%;
     height: 100%;
         margin: 10px;
-height:780px;
+
     max-width: 470px;
     
-
+    min-height: 700px!important;
 
     overflow-y: scroll; 
     box-sizing: border-box;
@@ -181,7 +145,6 @@ height:780px;
   }
 
   .form-section {
-  position: relative;
     margin-bottom: 0px;
     color: #888;
   }
@@ -537,7 +500,7 @@ height:780px;
 
   .etc{
     position: absolute;
-    top: 0px;
+    top: 15px;
     background: #fff;
     width: 100% !important;
     max-width: 430px;
@@ -563,7 +526,7 @@ height:780px;
     .slider-wrap-fixed{
      position: absolute;
     background: #fff;
-    bottom: 10px;
+    bottom: 15px;
     margin: 0 !important;
     padding: 5px 0;
     z-index: 99;
@@ -583,15 +546,15 @@ height:780px;
     }
 
     #responseBox{
-      margin-top:163px !important;
+      margin-top:200px !important;
     }
     
   #responseBox-bottom{
   
-    margin-bottom:38px !important;
+    margin-bottom:90px !important;
  @media (max-width: 468px) and (min-width: 0px) {
     
- margin-bottom:38px !important;    
+ margin-bottom:160px !important;    
 
     }
     
@@ -656,7 +619,7 @@ font-family: 'DM Sans'!important;
   padding: 12px;
   border-radius: 8px;
   font-size: 14px;
-  line-height: 1.0;
+  line-height: 1.5;
   color: #333;
   overflow-y: auto;
   
@@ -749,11 +712,6 @@ div#eleCont {
 `;
 
 
-let activity_start_time_center = ''
-let activity_end_time_center = ''
-let activity_duration_center = ''
-
-
 const link = document.createElement('link');
 link.href = "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"; // URL of the stylesheet
 link.rel = "stylesheet"; // Set the rel attribute
@@ -763,12 +721,10 @@ const styleTag = document.createElement("style");
 styleTag.textContent = modalStyles;
 document.head.appendChild(styleTag);
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const modalHTML = `
   <div id="activityModal" class="modal visible">
-    <div id="innerContainer" class="modal-content">
+    <div class="modal-content">
 
       <div id="formPage" class="modal-page active">
        
@@ -779,22 +735,21 @@ document.addEventListener("DOMContentLoaded", () => {
         <button class="back-btn">&#9776;</button>
         </div>
          <div class="widget-header-heading">
-       
         ${window.journeyConfig.activity_name ? window.journeyConfig.activity_name : "Activity Name"}
         </div>   
        
         </div>
 
-        <form class="modal-body">
+        <div class="modal-body">
           
 
-        <div style="position:relative" class="form-section">
+        <div class="form-section">
             <p>Origin</p>
-            <div  class="input-container ">
+            <div class="input-container">
               <svg class="input-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10"></circle>
               </svg>
-              <input autocomplete="originInput"  type="text" class="input-field " name:"originInput" id="originInput" placeholder="Enter origin" value="">
+              <input value="Stephansplatz" type="text" class="input-field " id="originInput" placeholder="Enter origin" value="">
               <svg class="input-icon-right" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="7"></circle>
                 <circle cx="12" cy="12" r="3"></circle>
@@ -803,12 +758,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 <line x1="12" y1="20" x2="12" y2="50"></line>
                 <line x1="50" y1="10" x2="20" y2="12"></line>
               </svg>
-            </div>  
-            <div style="position:absolute; top: 100%; left: 0; right: 0; " id="suggestions" class="suggestions-container">
-          <div class="suggestions-items">asfdas</div>
+            </div>
           </div>
-          </div>
-        
           <div class="form-section">
             <p>Destination</p>
             <div class="input-container">
@@ -839,9 +790,9 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
           <div class="form-footer">
             <button class="btn cancel-btn">Cancel</button>
-            <button type="submit" class="btn apply-btn" id="searchBtn">Search</button>
+            <button class="btn apply-btn" id="searchBtn">Search</button>
           </div>
-        </form>
+        </div>
       </div>
 
 
@@ -874,7 +825,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         
 
-              <div style='font-size:12px; display:none;'>Incoming Dates: </div>
+              <div style='font-size:12px'>Incoming Dates: </div>
               
               <div class="slider" id="topSlider">
               
@@ -886,7 +837,7 @@ document.addEventListener("DOMContentLoaded", () => {
               Incoming connections are loading...
           </div>
           <div id="activity-time" >
-             
+              
         ${window.journeyConfig.activity_name ? window.journeyConfig.activity_name : "Activity Name"}
               </div>
 
@@ -894,7 +845,7 @@ document.addEventListener("DOMContentLoaded", () => {
               Outgoing connections are loading...
           </div>
           <div class="slider-wrapper slider-wrap-fixed">
-         <div style='font-size:12px; display:none;'>Outgoing Dates: </div>
+         <div style='font-size:12px'>Outgoing Dates: </div>
             
             <div class="slider" id="bottomSlider"></div>
           </div>
@@ -905,22 +856,8 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
   `;
 
-
-  //   function timeToMinutes(timeString) {
-  //     const [hours, minutes, seconds] = timeString.split(':').map(Number);
-  //     return hours * 60 + minutes + (seconds ? seconds / 60 : 0);
-  //   }
-
-  //   function minutesToTime(totalMinutes) {
-  //     const hours = Math.floor(totalMinutes / 60);
-  //     const minutes = Math.floor(totalMinutes % 60);
-  //     const seconds = 0; // Assuming we want seconds to be 0 for this case
-  //     return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-  // }
-
   document.getElementById("modalContainer").innerHTML = modalHTML;
   const activityModal = document.getElementById("activityModal");
-  // const innerContainer = document.getElementById("innerContainer");
   const formPage = document.getElementById("formPage");
   const resultsPage = document.getElementById("resultsPage");
   const searchBtn = document.getElementById("searchBtn");
@@ -930,64 +867,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const activityDate = document.getElementById("activityDate");
   const dateDisplay = document.getElementById("dateDisplay");
   const errorContainer = document.getElementById("errorContainer");
-
-
-  const suggestionsContainer = document.getElementById('suggestions');
-
-  originInput.addEventListener('input', async function () {
-    const query = this.value;
-
-    if (query.length < 2) {
-      suggestionsContainer.innerHTML = '';
-      suggestionsContainer.style.display = 'none';
-      return;
-    }
-
-    try {
-      const accessToken = "development-token";
-
-      const response = await fetch(`https://api.zuugle-services.net/address-autocomplete?q=${query}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
-      const data = await response.json();
-      displaySuggestions(data.features);
-
-      console.log('Suggestions:', data.features);
-    } catch (error) {
-      console.error(error);
-    }
-  });
-
-  function displaySuggestions(features) {
-    suggestionsContainer.innerHTML = '';
-
-    if (features.length === 0) {
-      suggestionsContainer.style.display = 'none';
-      return;
-    }
-
-    features.forEach(feature => {
-      const suggestionItem = document.createElement('div');
-      suggestionItem.classList.add('suggestion-item');
-      suggestionItem.textContent = feature.properties.name;
-
-      suggestionItem.addEventListener('click', function () {
-        originInput.value = feature.properties.name;
-        suggestionsContainer.innerHTML = '';
-        suggestionsContainer.style.display = 'none';
-      });
-
-      suggestionsContainer.appendChild(suggestionItem);
-    });
-
-    suggestionsContainer.style.display = 'block'; // Show suggestions
-  }
 
   let fromConnections = [];
   let toConnections = [];
@@ -1381,8 +1260,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return startTime === startTimestamp && endTime === endTimestamp;
     });
 
-
-
     let html = "";
 
     selectedConnections.forEach((conn) => {
@@ -1467,6 +1344,7 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("The variable 'journeyConfig' is not defined. Please define it in the following format in a <script> tag before your main <script> in your HTML:\n\n" +
         "<script>\n" +
         "    var journeyConfig = {\n" +
+        "      activity_name: 'Activity name Here',\n" +
         "      activityStartLocation: 'Schützen am Gebirge Bahnhof',\n" +
         "      activityStartLocationType: 'station',\n" +
         "      activityEndLocation: 'Eisenstadt Bahnhof',\n" +
@@ -1485,7 +1363,7 @@ document.addEventListener("DOMContentLoaded", () => {
     page1.classList.remove("active");
     page2.classList.add("active");
 
-    const apiUrl = `https://api.zuugle-services.net/connections?date=${formattedDate}&user_start_location=${encodeURIComponent(location.value)}&user_start_location_type=address&activity_start_location=${window.journeyConfig.activityStartLocation}&activity_start_location_type=${window.journeyConfig.activityStartLocationType}&activity_end_location=${window.journeyConfig.activityEndLocation}&activity_end_location_type=${window.journeyConfig.activityEndLocationType}&activity_earliest_start_time=${window.journeyConfig.activityEarliestStartTime}&activity_latest_end_time=${window.journeyConfig.activityLatestEndTime}&activity_duration_minutes=${window.journeyConfig.activityDurationMinutes}`;
+    const apiUrl = `https://api.zuugle-services.net/connections?date=${formattedDate}&user_start_location=${encodeURIComponent(location.value)}&user_start_location_type=${window.journeyConfig.userStartLocationType}&activity_start_location=${window.journeyConfig.activityStartLocation}&activity_start_location_type=${window.journeyConfig.activityStartLocationType}&activity_end_location=${window.journeyConfig.activityEndLocation}&activity_end_location_type=${window.journeyConfig.activityEndLocationType}&activity_earliest_start_time=${window.journeyConfig.activityEarliestStartTime}&activity_latest_end_time=${window.journeyConfig.activityLatestEndTime}&activity_duration_minutes=${window.journeyConfig.activityDurationMinutes}`;
 
     const accessToken = "development-token";
 
@@ -1525,8 +1403,8 @@ document.addEventListener("DOMContentLoaded", () => {
       fromConnections = result.connections.from_activity;
       toConnections = result.connections.to_activity;
 
-      const bottomSlider = document.getElementById("bottomSlider");
-      bottomSlider.innerHTML = "";
+      const topSlider = document.getElementById("topSlider");
+      topSlider.innerHTML = "";
       fromConnections.forEach((conn, index) => {
         const startTime = conn.connection_start_timestamp
           .split(" ")[1]
@@ -1542,16 +1420,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const btn = document.createElement("button");
         btn.innerHTML = `
         <div style="display: flex; flex-direction: column; align-items: center;">
-          <div style="font-size: 14px; margin-bottom: 4px; font-weight: bold;">${startTime} - ${endTime}</div>
-          <div style="display: flex; justify-content:space-between; width: -webkit-fill-available; align-items: center; font-size: 12px; color: #666;">
+          
+        <div style="font-size: 14px; margin-bottom: 4px; font-weight: bold;">${startTime} - ${endTime}</div>
+         
+          <div style="display: flex; justify-content:space-between;  width: -webkit-fill-available; align-items: center; font-size: 12px; color: #666;">
             <span>${duration}</span>
+
             <div style="display: flex; gap:2px; align-items: center;">
-              <span>${conn.connection_transfers}</span>
-              <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14.8537 8.85354L12.8537 10.8535C12.7598 10.9474 12.6326 11.0001 12.4999 11.0001C12.3672 11.0001 12.24 10.9474 12.1462 10.8535C12.0523 10.7597 11.9996 10.6325 11.9996 10.4998C11.9996 10.3671 12.0523 10.2399 12.1462 10.146L13.293 8.99979H2.70678L3.85366 10.146C3.94748 10.2399 4.00018 10.3671 4.00018 10.4998C4.00018 10.6325 3.94748 10.7597 3.85366 10.8535C3.75983 10.9474 3.63259 11.0001 3.49991 11.0001C3.36722 11.0001 3.23998 10.9474 3.14616 10.8535L1.14616 8.85354C1.09967 8.8071 1.06279 8.75196 1.03763 8.69126C1.01246 8.63056 0.999512 8.5655 0.999512 8.49979C0.999512 8.43408 1.01246 8.36902 1.03763 8.30832C1.06279 8.24762 1.09967 8.19248 1.14616 8.14604L3.14616 6.14604C3.23998 6.05222 3.36722 5.99951 3.49991 5.99951C3.63259 5.99951 3.75983 6.05222 3.85366 6.14604C3.94748 6.23986 4.00018 6.36711 4.00018 6.49979C4.00018 6.63247 3.94748 6.75972 3.85366 6.85354L2.70678 7.99979H13.293L12.1462 6.85354C12.0523 6.75972 11.9996 6.63247 11.9996 6.49979C11.9996 6.36711 12.0523 6.23986 12.1462 6.14604C12.24 6.05222 12.3672 5.99951 12.4999 5.99951C12.6326 5.99951 12.7598 6.05222 12.8537 6.14604L14.8537 8.14604C14.9001 8.19248 14.937 8.24762 14.9622 8.30832C14.9873 8.36902 15.0003 8.43408 15.0003 8.49979C15.0003 8.5655 14.9873 8.63056 14.9622 8.69126C14.937 8.75196 14.9001 8.8071 14.8537 8.85354Z" fill="black"/>
-              </svg>
-            </div>
+            <span>${conn.connection_transfers}</span>
+
+           <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M14.8537 8.85354L12.8537 10.8535C12.7598 10.9474 12.6326 11.0001 12.4999 11.0001C12.3672 11.0001 12.24 10.9474 12.1462 10.8535C12.0523 10.7597 11.9996 10.6325 11.9996 10.4998C11.9996 10.3671 12.0523 10.2399 12.1462 10.146L13.293 8.99979H2.70678L3.85366 10.146C3.94748 10.2399 4.00018 10.3671 4.00018 10.4998C4.00018 10.6325 3.94748 10.7597 3.85366 10.8535C3.75983 10.9474 3.63259 11.0001 3.49991 11.0001C3.36722 11.0001 3.23998 10.9474 3.14616 10.8535L1.14616 8.85354C1.09967 8.8071 1.06279 8.75196 1.03763 8.69126C1.01246 8.63056 0.999512 8.5655 0.999512 8.49979C0.999512 8.43408 1.01246 8.36902 1.03763 8.30832C1.06279 8.24762 1.09967 8.19248 1.14616 8.14604L3.14616 6.14604C3.23998 6.05222 3.36722 5.99951 3.49991 5.99951C3.63259 5.99951 3.75983 6.05222 3.85366 6.14604C3.94748 6.23986 4.00018 6.36711 4.00018 6.49979C4.00018 6.63247 3.94748 6.75972 3.85366 6.85354L2.70678 7.99979H13.293L12.1462 6.85354C12.0523 6.75972 11.9996 6.63247 11.9996 6.49979C11.9996 6.36711 12.0523 6.23986 12.1462 6.14604C12.24 6.05222 12.3672 5.99951 12.4999 5.99951C12.6326 5.99951 12.7598 6.05222 12.8537 6.14604L14.8537 8.14604C14.9001 8.19248 14.937 8.24762 14.9622 8.30832C14.9873 8.36902 15.0003 8.43408 15.0003 8.49979C15.0003 8.5655 14.9873 8.63056 14.9622 8.69126C14.937 8.75196 14.9001 8.8071 14.8537 8.85354Z" fill="black"/>
+</svg>
+</div>
           </div>
+
         </div>
       `;
 
@@ -1560,13 +1443,12 @@ document.addEventListener("DOMContentLoaded", () => {
           btn.classList.add("active-time");
           filterDataByTimestamp("from", startTime, endTime);
         }
-        bottomSlider.appendChild(btn);
+        topSlider.appendChild(btn);
       });
 
-      // TO ACTIVITY (now at top)
-      const topSlider = document.getElementById("topSlider");
-      topSlider.innerHTML = "";
-      toConnections.forEach((conn, index) => {
+      const bottomSlider = document.getElementById("bottomSlider");
+      bottomSlider.innerHTML = "";
+      toConnections.forEach((conn, index) => {  // Added index parameter here
         const startTime = conn.connection_start_timestamp
           .split(" ")[1]
           .substring(0, 5);
@@ -1593,11 +1475,14 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         btn.onclick = () => filterDataByTimestamp("to", startTime, endTime);
+
+        // Add this condition to make the first button active by default
         if (index === 0) {
           btn.classList.add("active-time");
           filterDataByTimestamp("to", startTime, endTime);
         }
-        topSlider.appendChild(btn);
+
+        bottomSlider.appendChild(btn);
       });
 
       addSwipeBehavior("topSlider");
@@ -1605,6 +1490,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       console.error("Error fetching data:", error);
       responseBox.textContent = `Error: ${error.message}. Reloading...`;
+
+      // Reload after 3 seconds on error
       setTimeout(() => {
         window.location.reload();
       }, 3000);
@@ -1612,194 +1499,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  //   function filterDataByTimestamp(type, startTimestamp, endTimestamp) {
-  //     let filteredConnections = type === "from" ? fromConnections : toConnections;
-  //     // Swapped slider IDs
-  //     const sliderId = type === "from" ? "bottomSlider" : "topSlider";
-  //     // Swapped target boxes
-  //     let targetBox = type === "from" ? responseBoxbtm : responseBox;
-  //     let connectionType = type === "from" ? "from_activity" : "to_activity";
-
-  //     // Update active button state
-  //     const slider = document.getElementById(sliderId);
-  //     const buttons = slider.querySelectorAll("button");
-  //     buttons.forEach((btn) => {
-  //       btn.classList.remove("active-time");
-  //       if (btn.textContent.includes(`${startTimestamp} - ${endTimestamp}`)) {
-  //         btn.classList.add("active-time");
-  //       }
-  //     });
-
-  //     // Filter connections
-  //     const selectedConnections = filteredConnections.filter((conn) => {
-  //       const startTime = conn.connection_start_timestamp
-  //         .split(" ")[1]
-  //         .substring(0, 5);
-  //       const endTime = conn.connection_end_timestamp
-  //         .split(" ")[1]
-  //         .substring(0, 5);
-  //       return startTime === startTimestamp && endTime === endTimestamp;
-  //     });
-
-  //     let html = "";
-  //     let activityHtml = "";
-
-  //     selectedConnections.forEach((conn) => {
-  //       // Update activity-time box
-  //       activityHtml = `
-  //   <div style="display: flex; justify-content: space-between; align-items: center;" >
-  //     <div>
-  //       <div style="font-weight: 600; font-size: 18px; color: #111827;">
-  //         Activity Name
-  //       </div>
-  //       <div style="display: flex; flex-direction: column; gap: 12px;">
-  //         <div style="font-size: 14px; color: #6B7280;font-weight: 600;">
-  //           <div>Start time: ${
-  //             (() => {
-  //               const connectionStartTime = conn.connection_start_timestamp.split(" ")[1];
-  //               const earliestStartTime = window.journeyConfig.activityEarliestStartTime;
-
-  //               // Convert "HH:MM" to a numeric format (HHMM)
-  //               const connectionStartNumeric = parseInt(connectionStartTime.replace(":", ""));
-  //               const earliestStartNumeric = parseInt(earliestStartTime.replace(":", ""));
-
-  //               // Find the maximum time
-  //               const maxTimeNumeric = Math.max(connectionStartNumeric, earliestStartNumeric);
-
-  //               // Convert back to "HH:MM" format
-  //               const maxTime = `${String(Math.floor(maxTimeNumeric / 100)).padStart(2, "0")}:${String(maxTimeNumeric % 100).padStart(2, "0")}`;
-
-  //               return maxTime;
-  //             })()
-  //           }</div>
-  //           <div>End time: ${
-  //             (() => {
-  //               const connectionEndTime = conn.connection_end_timestamp.split(" ")[1];
-  //               const latestEndTime = window.journeyConfig.activityLatestEndTime;
-
-  //               // Convert "HH:MM" to a numeric format (HHMM)
-  //               const connectionEndNumeric = parseInt(connectionEndTime.replace(":", ""));
-  //               const latestEndNumeric = parseInt(latestEndTime.replace(":", ""));
-
-  //               // Find the minimum time
-  //               const minTimeNumeric = Math.min(connectionEndNumeric, latestEndNumeric);
-
-  //               // Convert back to "HH:MM" format
-  //               const minTime = `${String(Math.floor(minTimeNumeric / 100)).padStart(2, "0")}:${String(minTimeNumeric % 100).padStart(2, "0") }`;
-
-  //               return minTime;
-  //             })()
-  //           }</div>
-  //           <div>Duration: ${
-  //   (() => {
-  //     try {
-  //       const connectionStartTime = conn.connection_start_timestamp.split(" ")[1];
-  //       const earliestStartTime = window.journeyConfig.activityEarliestStartTime;
-  //       const connectionEndTime = conn.connection_end_timestamp.split(" ")[1];
-  //       const latestEndTime = window.journeyConfig.activityLatestEndTime;
-
-  //       // Convert "HH:MM" to a numeric format (HHMM)
-  //       const connectionStartNumeric = Math.max(
-  //         parseInt(connectionStartTime.replace(":", "")),
-  //         parseInt(earliestStartTime.replace(":", ""))
-  //       );
-  //       const connectionEndNumeric = Math.min(
-  //         parseInt(connectionEndTime.replace(":", "")),
-  //         parseInt(latestEndTime.replace(":", ""))
-  //       );
-
-  //       // Calculate the difference in minutes
-  //       const startHours = Math.floor(connectionStartNumeric / 100);
-  //       const startMinutes = connectionStartNumeric % 100;
-  //       const endHours = Math.floor(connectionEndNumeric / 100);
-  //       const endMinutes = connectionEndNumeric % 100;
-
-  //       const durationMinutes = (endHours * 60 + endMinutes) - (startHours * 60 + startMinutes);
-
-  //       return `${Math.floor(durationMinutes / 60)} hours and ${durationMinutes % 60} minutes`;
-  //     } catch (error) {
-  //       console.error("Error calculating duration:", error);
-  //       return "Invalid duration";
-  //     }
-  //   })()
-  // }</div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // `;
-
-  //       if (conn.connection_elements && conn.connection_elements.length > 0) {
-  //         html += `
-
-  //                 <div class="connection-meta">
-  //                     <span>${startTimestamp} - ${endTimestamp}</span>
-  //                     <span>${calculateTimeDifference(
-  //             conn.connection_start_timestamp,
-  //             conn.connection_end_timestamp
-  //           )}</span>
-  //                     <span>${conn.connection_transfers} transfers</span>
-  //                 </div>
-  //                 <div class="connection-elements">
-  //             `;
-
-  //         conn.connection_elements.forEach((element, index) => {
-  //           const elementDuration = calculateElementDuration(
-  //             element.departure_time,
-  //             element.arrival_time
-  //           );
-  //           const departureTime = new Date(element.departure_time)
-  //             .toTimeString()
-  //             .split("T")[0].substring(0, 5);
-  //             console.log(element.departure_time)
-  //           const arrivalTime = new Date(element.arrival_time)
-  //             .toTimeString()
-  //             .substring(0, 5);
-  //           console.log(element.type)
-  //           const iconType = !element.type ? "DEFAULT" : element.type;
-  //           const icon = getTransportIcon(iconType);
-
-  //           html += `
-  //                     <div class="connection-element">
-
-  //                         <div class="element-time"><span>${ String(element.departure_time).split("T")[1].substring(0, 5) }</span> 
-  //                           </span> ${element.from_location}</div>
-  //                         <div id='eleCont'>
-  //                         <div class="element-crcl"></div>
-  //                         <span class="element-icon">${icon}</span>
-  //                         <span class="element-duration">${element.vehicle_name}</span>
-  //                         </div>
-
-
-  //                     </div>
-  //                 `;
-  //         });
-
-  //         html += `</div>`;
-  //       }
-  //     });
-
-  //     document.getElementById("activity-time").innerHTML = activityHtml;
-  //     targetBox.innerHTML = html || "<div>No connection details available</div>";
-  //   }
-
-  function timeToMinutes(timeString) {
-    const [hours, minutes, seconds] = timeString.split(':').map(Number);
-    return hours * 60 + minutes + (seconds ? seconds / 60 : 0);
-  }
-
-  function minutesToTime(totalMinutes) {
-    const hours = Math.floor(totalMinutes / 60);
-    const minutes = Math.floor(totalMinutes % 60);
-    const seconds = 0; // Assuming we want seconds to be 0 for this case
-    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-  }
-
-
   function filterDataByTimestamp(type, startTimestamp, endTimestamp) {
     let filteredConnections = type === "from" ? fromConnections : toConnections;
-    const sliderId = type === "from" ? "bottomSlider" : "topSlider";
-    const targetBox = type === "from" ? responseBoxbtm : responseBox;
+    const sliderId = type === "from" ? "topSlider" : "bottomSlider";
+    let targetBox = type === "from" ? responseBox : responseBoxbtm;
+    let connectionType = type === "from" ? "from_activity" : "to_activity";
 
     // Update active button state
     const slider = document.getElementById(sliderId);
@@ -1813,9 +1517,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Filter connections
     const selectedConnections = filteredConnections.filter((conn) => {
-
-      const startTime = conn.connection_start_timestamp?.split(" ")[1]?.substring(0, 5);
-      const endTime = conn.connection_end_timestamp?.split(" ")[1]?.substring(0, 5);
+      const startTime = conn.connection_start_timestamp
+        .split(" ")[1]
+        .substring(0, 5);
+      const endTime = conn.connection_end_timestamp
+        .split(" ")[1]
+        .substring(0, 5);
       return startTime === startTimestamp && endTime === endTimestamp;
     });
 
@@ -1823,195 +1530,85 @@ document.addEventListener("DOMContentLoaded", () => {
     let activityHtml = "";
 
     selectedConnections.forEach((conn) => {
-      // console.log(type,' <- type here')
-      let max = ''
-      let min = ''
-      try {
-        // Update activity-time box
+      // Update activity-time box
+      activityHtml = `
+           <div style="display: flex; justify-content: space-between; align-items: center;" >
+  <div>
+    <div style="font-weight: 600; font-size: 18px; color: #111827;">
+      Activity Name
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="font-size: 14px; color: #6B7280;font-weight: 600;">
+        <div>Start time: ${conn.connection_start_timestamp
+          .split(" ")[1]
+          .substring(0, 5)}</div>
+        <div>End time: ${conn.connection_end_timestamp
+          .split(" ")[1]
+          .substring(0, 5)}</div>
+      </div>
+      <div style="font-size: 14px; color: #6B7280; font-weight: 600;">
+        <div>Duration: ${calculateTimeDifference(
+            conn.connection_start_timestamp,
+            conn.connection_end_timestamp
+          )}</div>
+        <div>Transfers: ${conn.connection_transfers}</div>
+    </div>
+  </div>
+</div>
+        `;
 
-        // ${(() => {
-        if (type == 'to') {
-          console.log("conn-check", conn)
-
-          const StartTimeSpan = document.getElementById("start_time_central_box");
-
-          const connectionStartTime = conn.connection_end_timestamp.split(" ")[1];
-          const earliestStartTime = window.journeyConfig.activityEarliestStartTime;
-          console.log("earliestStartTime", earliestStartTime)
-          console.log("connectionStartTime", connectionStartTime)
-
-          const earliestStartMinutes = timeToMinutes(earliestStartTime);
-          const connectionStartMinutes = timeToMinutes(connectionStartTime.padEnd(8, ':00')); // Pad connectionStartTime to match format
-          console.log("-- earliestStartMinutes", earliestStartMinutes)
-          console.log("-- connectionStartMinutes", connectionStartMinutes)
-          // Use Math.max to find the maximum time in minutes
-          const maxTimeNumeric = Math.max(earliestStartMinutes, connectionStartMinutes);
-          const finalTime = minutesToTime(maxTimeNumeric)
-          console.log("-- maximum Outof it", finalTime)
-
-          max = maxTimeNumeric
-          StartTimeSpan.innerText = finalTime + 'asd'
-          activity_start_time_center = finalTime
-        }
-
-        if (type == 'from') {
-
-
-          const connectionStartTime = conn.connection_start_timestamp.split(" ")[1];
-          const latestEndTime = window.journeyConfig.activityLatestEndTime;
-          console.log("latestEndTime", latestEndTime)
-          console.log("connectionStartTime", connectionStartTime)
-
-
-
-          const earliestStartMinutes = timeToMinutes(latestEndTime);
-          const connectionStartMinutes = timeToMinutes(connectionStartTime.padEnd(8, ':00')); // Pad connectionStartTime to match format
-          console.log("-- latestEndTime", earliestStartMinutes)
-          console.log("-- connectionStartMinutes", connectionStartMinutes)
-          // Use Math.max to find the maximum time in minutes
-          const maxTimeNumeric = Math.min(earliestStartMinutes, connectionStartMinutes);
-          const finalTime = minutesToTime(maxTimeNumeric)
-          console.log("-- minimum Outof it", finalTime)
-          activity_end_time_center = finalTime
-          min = maxTimeNumeric
-          // return finalTime;
-        }
-
-
-        // const connectionStartTime = conn.connection_start_timestamp;
-        //   const connectionEndTime = conn.connection_end_timestamp;
-        //   const connectionStartTime = max;
-        //   const connectionEndTime = min;
-
-        const durationInMinutes = Math.abs(max - min);
-
-        // Convert duration to hours and minutes
-        const durationHours = Math.floor(durationInMinutes / 60);
-        activity_duration_center = durationHours
-
-        activityHtml = `
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <div>
-                    <div style="font-weight: 600; font-size: 18px; color: #111827;">
-                    
-        ${window.journeyConfig.activity_name ? window.journeyConfig.activity_name : "Activity Name"}
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                      <div style="font-size: 14px; color: #6B7280; font-weight: 600;">
-                    
-                      <span>Start Time: <span id="start_time_central_box"> ${activity_start_time_center} </span></span>
-        
-                      <span>End Time:<span id="end_time_central_box"> ${activity_end_time_center} </span></span>
-        
-                      <span>Duration: <span id="start_and_end_time_duration_central_box">${activity_duration_center} hrs</span></span>
-                        </div>`
-
-
-        // })()
-        // }</div>
-        //       <p> Duration: ${(() => {
-        // try {
-
-
-
-        // console.log("duration Found in hrs: ", durationHours);
-
-        //   if (!connectionStartTime || !connectionEndTime) {
-        //     console.error("Missing or invalid time data.");
-        //     return "Invalid duration";
-        //   }
-
-
-        //   const startDate = new Date(connectionStartTime);
-        //   const endDate = new Date(connectionEndTime);
-
-        //   if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
-        //     console.error("Invalid date format for start or end time.");
-        //     return "Invalid duration";
-        //   }
-
-
-        //   const durationMs = endDate - startDate;
-
-        //   if (durationMs < 0) {
-        //     console.error("Duration is negative. Check the input timestamps.");
-        //     return "Invalid duration";
-        //   }
-
-
-        //   const durationMinutes = Math.floor(durationMs / (1000 * 60));
-        //   const hours = Math.floor(durationMinutes / 60);
-        //   const minutes = durationMinutes % 60;
-
-
-        //   const formattedStart = `${startDate.getFullYear()}-${String(startDate.getMonth() + 1).padStart(2, "0")}-${String(startDate.getDate()).padStart(2, "0")} ${startDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
-        //   const formattedEnd = `${endDate.getFullYear()}-${String(endDate.getMonth() + 1).padStart(2, "0")}-${String(endDate.getDate()).padStart(2, "0")} ${endDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
-
-
-        //   const formattedDuration = `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
-
-
-
-        //   return `${formattedDuration}`;
-        // } catch (error) {
-        //   console.error("Error calculating duration:", error);
-        //   return "Invalid duration";
-        // }
-        //     })()
-        // }
-        // </p >
-
-        //             </div >
-        //           </div >
-        //         </div >
-        //       </div >
-        //   `;
-
-        if (conn.connection_elements && conn.connection_elements.length > 0) {
-          html += `
-    <div class="connection-meta">
-            <span>${startTimestamp} - ${endTimestamp}</span>
-            <span>${calculateTimeDifference(
+      if (conn.connection_elements && conn.connection_elements.length > 0) {
+        html += `
+                <div class="connection-header">
+                    ${type === "from" ? "From Activity" : "To Activity"
+          } Connection
+                </div>
+                <div class="connection-meta">
+                    <span>${startTimestamp} - ${endTimestamp}</span>
+                    <span>${calculateTimeDifference(
             conn.connection_start_timestamp,
             conn.connection_end_timestamp
           )}</span>
-            <span>${conn.connection_transfers} transfers</span>
-          </div>
-    <div class="connection-elements">
-      `;
+                    <span>${conn.connection_transfers} transfers</span>
+                </div>
+                <div class="connection-elements">
+            `;
 
-          conn.connection_elements.forEach((element) => {
-            const elementDuration = calculateElementDuration(
-              element.departure_time,
-              element.arrival_time
-            );
-            const departureTime = element.departure_time.split("T")[1]?.substring(0, 5) || "N/A";
-            const arrivalTime = element.arrival_time.split("T")[1]?.substring(0, 5) || "N/A";
-            const iconType = element.type || "DEFAULT";
-            const icon = getTransportIcon(iconType);
+        conn.connection_elements.forEach((element, index) => {
+          const elementDuration = calculateElementDuration(
+            element.departure_time,
+            element.arrival_time
+          );
+          const departureTime = new Date(element.departure_time)
+            .toTimeString()
+            .substring(0, 5);
+          const arrivalTime = new Date(element.arrival_time)
+            .toTimeString()
+            .substring(0, 5);
+          console.log(element.type)
+          const iconType = !element.type ? "DEFAULT" : element.type;
+          const icon = getTransportIcon(iconType);
 
-            html += `
-      <div class="connection-element">
-        <div class="element-time">
-          <span>${departureTime}</span> ${element.from_location}
-        </div>
-        <div id="eleCont">
-          <div class="element-crcl"></div>
-          <span class="element-icon">${icon}</span>
-          <span class="element-duration">${element.vehicle_name ? element.vehicle_name : elementDuration}</span>
-        </div>
-      </div>
-      `;
-          });
+          html += `
+                    <div class="connection-element">
+                       
+                        <div class="element-time"><span>${departureTime}</span> ${element.from_location}</div>
+                        <div id='eleCont'>
+                        <div class="element-crcl"></div>
+                        <span class="element-icon">${icon}</span>
+                        <span class="element-duration">${elementDuration}</span>
+                        </div>
+                         
+                        
+                    </div>
+                `;
+        });
 
-          html += `</div>`;
-        }
-      } catch (error) {
-        console.error("Error processing connection:", error);
+        html += `</div>`;
       }
     });
 
-    document.getElementById("activity-time").innerHTML = activityHtml || "<div>No activity details available</div>";
+    document.getElementById("activity-time").innerHTML = activityHtml;
     targetBox.innerHTML = html || "<div>No connection details available</div>";
   }
 });
